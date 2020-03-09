@@ -94,6 +94,7 @@ window.onload = function(event){
                     for(var i=0;i<tmp1.length;i++){
                         tmp1.removeChild(tmp1.childlen[i]);
                     }
+                    window.location.reload();
                 }
                 //ストレージに保存
                 var key = tmp[2].querySelector('.hiddenKey').innerText;
@@ -109,7 +110,7 @@ window.onload = function(event){
 
                 var key = tmp[2].querySelector('.hiddenKey').innerText;
                 strage.removeItem(key);
-
+                window.location.reload();
             });
         }
     }
