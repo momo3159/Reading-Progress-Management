@@ -62,7 +62,7 @@ function getResult(data){
             image.src = data.items[i].volumeInfo.imageLinks.smallThumbnail;
         }
         else{
-            // image.src = 'alt.png'
+            image.src = 'alt.png'
         }
         
         console.log(text)
