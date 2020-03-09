@@ -26,14 +26,24 @@ window.onload = function(event){
             delBtnNode.setAttribute('value', '削除する');
             finBookNode.appendChild(delBtnNode);
 
+            var hiddenKeyNode = document.createElement('div');
+            hiddenKeyNode.setAttribute('class','hiddenKey');
+            hiddenKeyNode.innerText = k;
+            finBookNode.appendChild(hiddenKeyNode);
+
             delBtnNode.addEventListener('click', function deleteData(event){
-                var tmp = event.target.parentNode.children;
-                console.log(tmp);
+                var tmp = event.target.parentNode;
+                
                 var strage = localStorage;
-
-                var key = tmp[2].querySelector('.hiddenKey').innerText;
+                // console.log(tmp);
+                // for(var i=0;i<tmp.children.length;i++){
+                //     tmp.removeChild(tmp.children[i]);
+                // }
+                // tmp.innerText = "";
+                var key = tmp.querySelector('.hiddenKey').innerText;
+                console.log(key);
                 strage.removeItem(key);
-
+                window.location.reload();
             });
         }
     }
