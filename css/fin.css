@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(191, 235, 255);
+}
+
+#header {
+    border: solid #CCCCCC;
+    border-width: 1px 0;
+    padding: 10px 0;
+    width: 980px;
+}
+
+#header ul {
+    margin: 0;
+    padding: 0;   
+}
+
+#header ul:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+#header ul li {
+    list-style: none;
+    float: left;
+    border-left: solid 1px #CCCCCC;
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 326px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.429;
+}
+
+#header ul li:first-child {
+    border-left: none;
+}
+
+#header ul li a{
+    color: #CCCCCC;
+    text-decoration: none;
+}
