@@ -23,7 +23,7 @@ btnLoad.addEventListener('click', function(event){
     // [手順5]リクエストを送信する
     xmlHttpRequest.send();
 
-})
+});
 
 function getResult(data){
     var retVal = data;
@@ -31,15 +31,24 @@ function getResult(data){
     result.textContent='';
     console.log(data.items.length);
     for(var i=0;i<data.items.length;i++){
-        var text = '書籍名：'+data.items[i].volumeInfo.title;
-        text+=' ページ数：'+data.items[i].volumeInfo.pageCount;
-        if(data.items[i].volumeInfo.authors != undefined){
-            text+=' 著者：'+data.items[i].volumeInfo.authors[0]; 
+        var text = '書籍名：'+data.items[i].volumeInfo.title + '\n';
+        text+='ページ数：'+data.items[i].volumeInfo.pageCount + '\n';
+        if(data.items[i].volumeInfo.industryIdentifiers instanceof Array){
+            var identifier = data.items[i].volumeInfo.industryIdentifiers[0].identifier;
         }
         else{
-            text+=' 著者：'+'不明'; 
+            var identifier = data.items[i].volumeInfo.industryIdentifiers;
         }
-        text+=' 出版日'+data.items[i].volumeInfo.publishedDate;
+        text+='識別子：'+identifier + '\n';
+        if(data.items[i].volumeInfo.authors != undefined){
+            text+='著者：'+data.items[i].volumeInfo.authors[0] + '\n'; 
+        }
+        else{
+            text+='著者：'+'不明' + '\n'; 
+        }
+        text+='出版日：'+data.items[i].volumeInfo.publishedDate + '\n';
+        
+        
         var image = document.createElement('img');
         image.src = data.items[i].volumeInfo.imageLinks.smallThumbnail;
         
@@ -50,12 +59,28 @@ function getResult(data){
         div.appendChild(image);
         
         var div1 = document.createElement('div');
-        div1.textContent = text;
+        div1.innerText = text;
         div.appendChild(div1);
         var btn = document.createElement('input');
         btn.setAttribute('type', 'button');
         btn.setAttribute('value', '登録');
         btn.className = 'register';
+        // btn.setAttribute('onclick', "regBooktoLS(event, " + this.identifier + ")");
         div.appendChild(btn);
+        btn.addEventListener('click', function regBooktoLS(event){
+            var storage = localStorage;
+        
+            var tmp = event.target.parentNode;
+            console.log(tmp);
+            var imgPath = tmp.children[0].src;
+            var bookdata = tmp.children[1].innerText.split('\n', 3);
+        
+            var bookName = bookdata[0].split('：')[1];
+            var pageNum = bookdata[1].split('：')[1];
+        
+            var obj = {'書籍名':bookName, 'ページ数': pageNum, 'img':imgPath, '進捗':0};
+            storage[bookdata[2].split('：')[1]] = JSON.stringify(obj);
+        }, false);
     }
-}
+};
+
