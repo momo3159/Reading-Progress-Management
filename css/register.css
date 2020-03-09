@@ -1,0 +1,94 @@
+body {
+    background-color: rgb(191, 235, 255);
+}
+
+#header {
+    border: solid #CCCCCC;
+    border-width: 1px 0;
+    padding: 10px 0;
+    width: 980px;
+}
+
+#header ul {
+    margin: 0;
+    padding: 0;   
+}
+
+#header ul:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+#header ul li {
+    list-style: none;
+    float: left;
+    border-left: solid 1px #CCCCCC;
+    padding: 0 10px;
+    box-sizing: border-box;
+    width: 326px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.429;
+}
+
+#header ul li:first-child {
+    border-left: none;
+}
+
+#header ul li a{
+    color: #CCCCCC;
+    text-decoration: none;
+}
+
+.search {
+    margin-left: 270px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    
+}
+#search {
+    width: 400px;
+    height: 40px;
+    vertical-align: top;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+#submit {
+    border-style: none;
+    width: 50px;
+    height: 45px;
+    background-color: #CCCCCC;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+#search:hover {
+    outline: solid 0.1px #CCCCCC;
+}
+
+.result {
+    margin: 15px auto -15px 0px;
+    width: 980px;
+    font-size: 16px;
+    border-bottom: solid 1px #CCCCCC;
+    padding: 10px 10px 10px 10px; 
+    width: 1200px;
+}
+
+.regBook {
+    border-bottom: solid 1px #CCCCCC;
+    margin-bottom: 20px;
+}
+
+.register {
+    margin-bottom: 5px;
+    border-style: none;
+    width: 50px;
+    height: 30px;
+    background-color: #CCCCCC;
+    font-size: 14px;
+    border-radius: 4px;
+
+}
