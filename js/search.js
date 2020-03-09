@@ -42,11 +42,16 @@ function getResult(data){
         text+=' 出版日'+data.items[i].volumeInfo.publishedDate;
         var image = document.createElement('img');
         image.src = data.items[i].volumeInfo.imageLinks.smallThumbnail;
-        result.appendChild(image);
+        
         console.log(text)
         var div = document.createElement('div');
-        div.textContent = text;
-        result.appendChild(div)
+        div.className="regBook"
+        result.appendChild(div);
+        div.appendChild(image);
+        
+        var div1 = document.createElement('div');
+        div1.textContent = text;
+        div.appendChild(div1);
         var btn = document.createElement('input');
         btn.setAttribute('type', 'button');
         btn.setAttribute('value', '登録');
