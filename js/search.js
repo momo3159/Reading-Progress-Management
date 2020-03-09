@@ -96,6 +96,8 @@ function getResult(data){
         
             var obj = {'書籍名':bookName, 'ページ数': pageNum, 'img':imgPath, '進捗':0};
             storage[bookdata[2].split('：')[1]] = JSON.stringify(obj);
+
+            window.alert("「" + obj.書籍名 + "」を読書中の棚に登録しました");
         }, false);
     }
 };
