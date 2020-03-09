@@ -32,16 +32,24 @@ function getResult(data){
     console.log(data.items.length);
     for(var i=0;i<data.items.length;i++){
         var text = '書籍名：'+data.items[i].volumeInfo.title + '\n';
-        text+='ページ数：'+data.items[i].volumeInfo.pageCount + '\n';
+        if(typeof data.items[i].volumeInfo.pageCount != 'undefined'){
+            text+='ページ数：'+data.items[i].volumeInfo.pageCount + '\n';
+        }
+        else{
+            text+='ページ数：'+ -1 + '\n';
+        }
+
         if(data.items[i].volumeInfo.industryIdentifiers instanceof Array){
             var identifier = data.items[i].volumeInfo.industryIdentifiers[0].identifier;
         }
         else{
             var identifier = data.items[i].volumeInfo.industryIdentifiers;
         }
+
         text+='識別子：'+identifier + '\n';
-        if(data.items[i].volumeInfo.authors != undefined){
-            text+='著者：'+data.items[i].volumeInfo.authors[0] + '\n'; 
+
+        if(data.items[i].volumeInfo.authors){
+            text+='著者：'+data.items[i].volumeInfo.authors + '\n'; 
         }
         else{
             text+='著者：'+'不明' + '\n'; 
@@ -50,7 +58,12 @@ function getResult(data){
         
         
         var image = document.createElement('img');
-        image.src = data.items[i].volumeInfo.imageLinks.smallThumbnail;
+        if(data.items[i].volumeInfo.imageLinks){
+            image.src = data.items[i].volumeInfo.imageLinks.smallThumbnail;
+        }
+        else{
+            // image.src = 'alt.png'
+        }
         
         console.log(text)
         var div = document.createElement('div');
@@ -77,6 +90,9 @@ function getResult(data){
         
             var bookName = bookdata[0].split('：')[1];
             var pageNum = bookdata[1].split('：')[1];
+            if(parseInt(pageNum) < 0){
+                pageNum = window.prompt("ページ数を入力してください", "");
+            }
         
             var obj = {'書籍名':bookName, 'ページ数': pageNum, 'img':imgPath, '進捗':0};
             storage[bookdata[2].split('：')[1]] = JSON.stringify(obj);
