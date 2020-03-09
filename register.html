@@ -2,10 +2,12 @@
 <html lang='ja'>
     <head>
         <title>読書の進捗管理アプリ</title>
+        <link rel='stylesheet' href='css/register.css'>
     </head>
     <body>
         <div id="app">
             <div class="container">
+                <h1 class="title">読書の進捗管理</h1>
                 <div id="header">
                     <ul>
                         <li><a href="home.html">読書中の本一覧</a></li>
@@ -15,8 +17,7 @@
                 </div>
             </div>
             <div class="search">
-                <input type='search' id='search' placeholder='キーワード'>
-                <input type='submit' id='submit' value='検索'>
+                    <input type='text' id='search' placeholder='キーワード'><input type='button' id='submit' value='検索'>
             </div>
             <div id='result'></div>  
         </div>
