@@ -73,3 +73,7 @@ body {
     transform: translateY(4px);
     border-bottom: none;
 }
+
+.hiddenKey {
+    display: none;
+}
