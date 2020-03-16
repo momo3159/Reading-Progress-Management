@@ -79,9 +79,9 @@ window.onload = function(event){
                 var data1  = parseInt(tmp[2].querySelector('.data1').innerText);
                 var data2 = parseInt(tmp[2].querySelector('.data2').innerText);
             
-                pages = parseInt(window.prompt("読み進めたページ数を入力してください", ""));
+                pages = parseInt(window.prompt("最後に読んだページ番号を入力してください", ""));
                 if(pages){
-                    data1 += pages;
+                    data1 = pages;
                     // console.log(tmp[3].querySelector('.data3'));
                     tmp[2].querySelector('.data1').innerText = data1;
                     tmp[2].querySelector('.per').innerText= parseInt(data1*100/data2) + "%";
